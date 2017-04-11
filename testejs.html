@@ -1,0 +1,53 @@
+<html>
+<script>
+/*
+function Pessoa(nomeDaPessoa){
+    //membros privados
+    var _livros = [];
+	
+	
+    var _ordenaLivros = function(){
+        return _livros.sort();
+    }
+ 
+    //membros publicos
+    return {
+        adicionaLivro: function(livro) {
+            _livros.push(livro);
+            //return this;
+        },
+        meusLivros: function(){
+            return _ordenaLivros(_livros).join(", ");
+        }
+    };
+}
+ 
+var p = new Pessoa("Crock Norris");
+p.adicionaLivro("Javascript: The Good Parts");
+p.adicionaLivro("Das Beste an Javascript");
+alert(p.meusLivros()); //Das Beste an Javascript, Javascript: The Good Parts
+*/
+//....
+</script>
+	<body>
+		<button onclick='testList()'>aqui</button>
+		<a href="#">link 1</a>
+		<a href="#">link 2</a>
+		<a href="#">link 3</a>
+		<a href="#">link 4</a>
+	</body>
+</html>
+<script>
+var elems = document.getElementsByTagName( "a" );
+
+for ( var i = 0; i < elems.length; i++ ) {
+
+		(function( lockedInIndex ){
+			elems[ i ].addEventListener( 'click', function(e){
+			e.preventDefault();
+			alert( 'I am link #' + lockedInIndex );
+			}, 'false' );
+		})( i );
+}
+
+</script>

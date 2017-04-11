@@ -1,0 +1,14 @@
+<html>	
+	<body>
+		<input type="text" id="a" name="a" value="asdsadasdssa">
+		<input type="text" id="b" name="b" value="asdsadasdssa">
+	</body>
+	<script>
+
+			HTMLElement.prototype.remover = function() {
+				this.parentNode.removeChild(this);
+			};
+
+			document.getElementById("a").remover();
+	 </script>
+ </html>

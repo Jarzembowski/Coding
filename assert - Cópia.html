@@ -1,0 +1,68 @@
+<body>
+ <input id="first" value="asasasas"/>
+ <input id="second"/>
+ <script type="text/javascript">
+/* 
+ var elems = {
+	 length: 0,
+	 add: function(elem){
+	 Array.prototype.push.call(this, elem);
+	 },
+
+	 gather: function(id){
+	 this.add(document.getElementById(id));
+	 }
+ };
+
+elems.gather("first");
+console.log(elems.length);
+console.log(elems[0].value);
+
+elems.gather("second");
+console.log(elems.length);
+console.log(elems[1].nodeType);
+
+
+ function smallest(array){
+ 	return Math.min.apply(Math, array);
+ }
+ function largest(array){
+ 	return Math.max.apply(Math, array);
+ }
+
+ console.log(smallest([0, 1, 2, 3]));
+ console.log(largest([0, 1, 2, 3]));
+
+
+
+//merge objects
+function merge(root){
+	
+ for (var i = 1; i < arguments.length; i++) {
+	 for (var key in arguments[i]) {
+		 root[key] = arguments[i][key];
+	 }
+ }
+
+ return root;
+}
+
+var merged = merge(
+{name: "Batou"},
+{city: "Niihama"});
+
+*/
+
+
+
+//REGEX
+//var pattern = new RegExp("test"); 
+//var pattern = /test/;
+var pattern = /<(\w+)>(.+)<\/\1>/;
+
+console.log(pattern.test("<teste>ddddddd</teste>"));
+
+
+
+ </script>
+</body>

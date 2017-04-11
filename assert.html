@@ -1,0 +1,219 @@
+<html>
+ <head>
+ <title>Test Suite</title>
+
+ <style>
+ #results li.pass { color: green; }
+ #results li.fail { color: red; }
+ </style>
+ </head>
+ <body>
+ <ul id="results"></ul>
+ <button id="test">Click Me!</button> 
+  <script>
+
+ /*
+ (function() {
+	 var results;
+	 this.assert = function assert(value, desc) {
+		 var li = document.createElement("li");
+		 li.className = value ? "pass" : "fail";
+		 li.appendChild(document.createTextNode(desc));
+		 results.appendChild(li);
+		 if (!value) {
+		 li.parentNode.parentNode.className = "fail";
+		 }
+		 return li;
+	 };
+	 this.test = function test(name, fn) {
+	 results = document.getElementById("results");
+	 results = assert(true, name).appendChild(
+	 document.createElement("ul"));
+	 fn();
+	 };
+ })();
+
+ window.onload = function() {
+	 test("A test.", function() {
+	 assert(true, "First assertion completed");
+	 assert(true, "Second assertion completed");
+	 assert(true, "Third assertion completed");
+	 assert(false, "Fourth assertion completed");
+	 });
+
+	 test("Another test.", function() {
+	 assert(true, "First test completed");
+	 assert(false, "Second test failed");
+	 assert(true, "Third assertion completed");
+	 });
+
+	 test("A third test.", function() {
+	 assert(null, "fail");
+	 assert(5, "pass")
+	 });
+ };
+ 
+
+ (function() {
+ var results;
+ this.assert = function assert(value, desc) {
+ var li = document.createElement("li");
+ li.className = value ? "pass" : "fail";
+ li.appendChild(document.createTextNode(desc));
+ results.appendChild(li);
+ if (!value) {
+ li.parentNode.parentNode.className = "fail";
+ }
+ return li;
+ };
+ this.test = function test(name, fn) {
+ results = document.getElementById("results");
+ results = assert(true, name).appendChild(
+ document.createElement("ul"));
+ fn();
+ };
+ })();
+
+
+function useless(callback) { return callback(); }
+
+var text = 'Domo arigato!';
+
+
+test("A test.", function() {
+	assert(useless(function(){ return text; }) === text,
+ 	"The useless function works! " + text);	
+	 });
+
+
+var values = [ 213, 16, 2058, 54, 10, 1965, 57, 9 ];
+values.sort(function(value1,value2){ return value1 - value2; });
+console.log(values);
+
+function outer(){
+	 var a = 1;
+		 function inner(){  }
+			 var b = 2;
+			 if (a == 1) {
+			 var c = 3;
+		 }
+}
+outer();
+
+ function forEach(list,callback) {
+	 for (var n = 0; n < list.length; n++) {
+	 	callback.call(list[n],n);
+	 }
+ }
+
+ var weapons = ['shuriken','katana','nunchucks'];
+
+ forEach(weapons, function(index){console.log(this + " - Got the expected value of " + weapons [index]);});
+
+
+ function chirp(n) {
+ return n > 1 ? chirp(n - 1) + "-chirp" : "chirp";
+ } 
+
+
+console.log(chirp(5));
+
+
+ var store = {
+	 nextId: 1,
+	 cache: {},
+	 add: function(fn) {
+		 if (!fn.id) {		 	 
+			 fn.id = store.nextId++;
+			 console.log(fn);
+		 	 console.log(fn.id);
+			 return !!(store.cache[fn.id] = fn);
+		 }
+	 }
+ };
+
+ function ninja(){}
+ function banana(){}
+
+ console.log(store.add(ninja));
+ console.log(store.add(banana));
+
+
+
+//caching DOM elements
+function getElements(name) {
+if (!getElements.cache) getElements.cache = {};
+    return getElements.cache[name] =
+    getElements.cache[name] ||
+    document.getElementsByTagName(name);
+}
+
+function makeNinja(name){}
+function makeSamurai(name, rank){}
+assert(makeNinja.length == 1, "Only expecting a single argument");
+assert(makeSamurai.length == 2, "Two arguments expected");
+
+var outerValue = 'ninja';
+ var later;
+
+ function outerFunction() {
+	 var innerValue = 'samurai';
+
+	 function innerFunction(paramValue) {
+		assert(outerValue,"Inner can see the ninja.");
+		assert(innerValue,"Inner can see the samurai.");
+		assert(paramValue,"Inner can see the wakizashi.");
+		assert(tooLate,"Inner can see the ronin.");
+	 }
+	 later = innerFunction;
+ }
+
+ assert(!tooLate,"Outer can't see the ronin.");
+ var tooLate = 'ronin';
+ outerFunction();
+ later('wakizashi'); 
+
+
+
+  function animateIt(elementId) {
+	 var elem = document.getElementById(elementId);
+	 var tick = 0;
+
+	 var timer = setInterval(function(){
+	 if (tick < 100) {
+		 elem.style.left = elem.style.top = tick + "px";
+		 tick++;
+	 }
+	 else {
+		 clearInterval(timer);
+		 assert(tick == 100,
+		 "Tick accessed via a closure.");
+		 assert(elem,
+		 "Element also accessed via a closure.");
+		 assert(timer,
+		 "Timer reference also obtained via a closure." );
+	 }
+	 }, 10);
+ }
+ animateIt('box'); 
+*/
+
+function assert(value, desc) {
+	 var li = document.createElement("li");
+	 li.className = value ? "pass" : "fail";
+	 li.appendChild(document.createTextNode(desc));
+	 document.getElementById("results").appendChild(li);
+ } 
+
+
+
+
+var delay = setTimeout.partial(undefined, 10);
+delay(function(){
+ assert(true,
+ "A call to this function will be delayed 10 ms.");
+});
+
+ </script>
+ </body>
+</html>

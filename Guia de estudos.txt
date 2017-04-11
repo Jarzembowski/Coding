@@ -1,0 +1,25 @@
+Curso Javascript 
+
+Weeks 1 and 2 (Introduction, Data Types, Expressions, and Operators
+
+If you do not already know HTML and CSS very well, complete the Web Fundamentals
+Track on Codecademy.
+Read the Preface and Chapters 1 and 2 of JavaScript: The Definitive Guide.
+Or Read the Introduction and Chapters 1 and 2 of Professional JavaScript
+for Web Developers.
+
+Work through the Introduction to JavaScript section of the JavaScript Track on Codecademy.
+Read chapters 3 and 4 of JavaScript: The Definitive Guide.
+Or Read the Preface and Chapters 3 and 4 of Professional JavaScript
+for Web Developers. You can skip the section on “Bitwise Operators”;
+it is hardly likely you will use those in your JavaScript career.
+
+And again, make sure you stop and write the example code in your browser’s 
+console (or JSFiddle) and experiment—change some of the variables and tweak
+the code a bit.
+
+Read chapter 5 of JavaScript: The Definitive Guide. No reading
+for Professional JavaScript for Web Developers, you have learned 
+the material already in the last chapter.
+And work through sections 2 to 5 of the JavaScript Track on Codecademy.
+-----------------------------------------------------------

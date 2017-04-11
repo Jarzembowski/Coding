@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+</head>
+<body>
+  <input type="button" id="btn_1" value="sssssssssss">
+<script>
+
+/*
+function showStatistics(args) {
+
+  document.write("<p><strong>Name:</strong> " + args.name + "<br />");
+  document.write("<strong>Team:</strong> " + args.team + "<br />");
+  if (typeof args.position === "string") {
+    document.write("<strong>Position:</strong> " + args.position + "<br />"); 
+  }
+  if (typeof args.average === "number") {
+    document.write("<strong>Average:</strong> " + args.average + "<br />");
+  }
+  if (typeof args.homeruns === "number") {
+    document.write("<strong>Home Runs:</strong> " + args.homeruns + "<br />");
+  }
+  if (typeof args.rbi === "number") {
+    document.write("<strong>Runs Batted In:</strong> " + args.rbi + "</p>");
+  }
+}
+
+showStatistics({
+  name: "Mark Teixeira"
+});
+
+showStatistics({
+  name: "Mark Teixeira",
+  team: "New York Yankees"
+});
+
+showStatistics({
+  name: "Mark Teixeira",
+  team: "New York Yankees",
+  position: "1st Base",
+  average: .284,
+  homeruns: 32,
+  rbi: 101
+});
+*/
+
+/*
+timObject = {
+    property1 : "Hello",
+    property2 : "MmmMMm",
+    property3 : ["mmm", 2, 3, 6, "kkk"],
+    method1 : function(){alert("Method had been called" + this.property1)}
+};
+ 
+timObject.method1();
+alert(timObject.property3[2]) // will yield 3
+*/
+
+/*
+function cat(name) {
+    this.name = name;
+    this.talk = function() {
+        alert( this.name + " say meeow!" )
+    }
+} 
+
+cat.prototype.changeName = function(name) {
+    this.name = name;
+}
+
+
+cat.prototype.anotherTalk = function(sound) {
+    alert(sound);
+}
+
+
+firstCat = new cat("pursur");
+firstCat.changeName("Bill");
+
+var teste = firstCat.talk; //alerts "Bill says meeow!"
+*/
+
+/*
+var data = [
+    {name:"Samantha", age:12},
+    {name:"Alexis", age:14}
+]
+var user = {
+    data    :[
+        {name:"T. Woods", age:37},
+        {name:"P. Mickelson", age:43}
+    ],
+    showData:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1;
+        console.log (this.data[randomNum].name + " " + this.data[randomNum].age);
+    }
+}
+var showDataVar = user.showData.bind (user);
+showDataVar ();
+
+
+var cars = {
+  data:[
+  {name:"Honda Accord", age:14},
+  {name:"Tesla Model S", age:2}
+  ]
+}
+
+cars.showData = user.showData.bind (cars);
+cars.showData (); // Honda Accord 14​
+
+---------------------------------------
+function greet (gender, age, name) {
+    // if a male, use Mr., else use Ms.​
+    var salutation = gender === "male" ? "Mr. " : "Ms. ";
+    if (age > 25) {
+      return "Hello, " + salutation + name + ".";
+    }
+    else {
+      return "Hey, " + name + ".";
+    }
+  }
+
+var greetAnAdultMale = greet.bind (null, "male");
+
+console.log(greetAnAdultMale (16,"John Hartlove")); // "Hello, Mr. John Hartlove."
+
+var greetAYoungster = greet.bind (null, "", 16);
+greetAYoungster ("Alex"); // "Hey, Alex."
+greetAYoungster ("Emma Waterloo"); // "Hey, Emma Waterloo."​
+
+---------------------------------
+var avgScore = "global avgScore";
+
+//global function​
+function avg (arrayOfScores) {
+    // Add all the scores and return the total​
+    var sumOfScores = arrayOfScores.reduce (function (prev, cur, index, array) {
+        return prev + cur;
+    });
+
+    // The "this" keyword here will be bound to the global object, unless we set the "this" with Call or Apply​
+    this.avgScore = sumOfScores / arrayOfScores.length;
+}
+var gameController = {
+  scores  :[20, 34, 55, 46, 77],
+  avgScore: null
+}
+avg (gameController.scores);
+// Proof that the avgScore was set on the global window object​
+console.log (window.avgScore); // 46.4​
+console.log (gameController.avgScore); // null​
+
+// reset the global avgScore​
+avgScore = "global avgScore";
+
+// To set the "this" value explicitly, so that "this" is bound to the gameController,
+// We use the call () method:​
+
+avg.call (gameController, gameController.scores);
+
+console.log (window.avgScore); //global avgScore​
+console.log (gameController.avgScore); // 46.4​
+
+---------------------------------
+ // Define an object with some properties and a method​
+    // We will later pass the method as a callback function to another function​
+    var clientData = {
+    id: 094545,
+    fullName: "Not Set",
+    // setUserName is a method on the clientData object​
+    setUserName: function (firstName, lastName)  {
+    // this refers to the fullName property in this object​
+    this.fullName = firstName + " " + lastName;
+    }
+    }
+
+      function getUserInput (firstName, lastName, callback, callbackObj) {
+          // The use of the Apply method below will set the "this" value to callbackObj​
+          callback.apply (callbackObj, [firstName, lastName]);
+      }
+
+     // The clientData object will be used by the Apply method to set the "this" value​
+    getUserInput ("Barack", "Obama", clientData.setUserName, clientData);
+    // the fullName property on the clientData was correctly set​
+    console.log (clientData.fullName); // Barack Obama​
+------------------------------
+var anArrayLikeObj = {0:"Martin", 1:78, 2:67, 3:["Letta", "Marieta", "Pauline"], length:4 };
+
+// Make a quick copy and save the results in a real array:
+// First parameter sets the "this" value​
+var newArray = Array.prototype.slice.call (anArrayLikeObj, 0);
+
+console.log (newArray); // ["Martin", 78, 67, Array[3]]
+
+// Search for "Martin" in the array-like object​
+console.log (Array.prototype.indexOf.call (anArrayLikeObj, "Martin") === -1 ? false : true); // true​
+
+// Try using an Array method without the call () or apply ()
+//console.log (anArrayLikeObj.indexOf ("Martin") === -1 ? false : true); // Error: Object has no method 'indexOf'​
+
+// Reverse the object:
+console.log (Array.prototype.reverse.call (anArrayLikeObj));
+// {0: Array[3], 1: 67, 2: 78, 3: "Martin", length: 4}
+
+// Sweet. We can pop too:
+console.log (Array.prototype.pop.call (anArrayLikeObj));
+console.log (anArrayLikeObj); // {0: Array[3], 1: 67, 2: 78, length: 3}
+
+// What about push?​
+console.log (Array.prototype.push.call (anArrayLikeObj, "Jackie"));
+console.log (anArrayLikeObj); // {0: Array[3], 1: 67, 2: 78, 3: "Jackie", length: 4}
+
+function transitionTo () {
+  // Because the arguments object is an array-like object​
+  // We can use the slice () Array method on it​
+  // The number "1" parameter means: return a copy of the array from index 1 to the end. Or simply: skip the first item​
+
+  var args = Array.prototype.slice.call (arguments, 1);
+
+  // I added this bit so we can see the args value​
+  console.log (args);
+
+  // I commented out this last line because it is beyond this example​
+  //doTransition(this, name, this.updateURL, args);​
+}
+
+// Because the slice method copied from index 1 to the end, the first item "contact" was not returned​
+transitionTo ("contact", "Today", "20"); // ["Today", "20"]​
+
+--------------------------------------
+*/
+
+
+var gameController = {
+  scores  :[20, 34, 55, 46, 77],
+  avgScore:null,
+  players :[
+    {name:"Tommy", playerID:987, age:23},
+    {name:"Pau", playerID:87, age:33}
+  ]
+}
+
+var appController = {
+  scores  :[900, 845, 809, 950],
+  avgScore:null,
+  avg     :function () {
+
+    var sumOfScores = this.scores.reduce (function (prev, cur, index, array) {
+      return prev + cur;
+    });
+
+
+    this.avgScore = sumOfScores / this.scores.length;
+  },
+
+    teste  :function () {
+
+      var args = Array.prototype.slice.call (arguments);
+      var lastItem = args.pop ();
+        
+      this.avgScore = lastItem * 2;
+  }
+}
+
+// Note that we are using the apply () method, so the 2nd argument has to be an array​
+appController.avg.apply (gameController);
+console.log (gameController.avgScore); // 46.4​
+
+appController.teste.apply (gameController,[9,3,4]);
+console.log (gameController.avgScore); // 46.4​
+
+
+// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated​
+console.log (appController.avgScore); // null​
+
+
+/*
+ var students = ["Peter Alexander", "Michael Woodruff", "Judy Archer", "Malcolm Khan"];
+
+    // No specific parameters defined, because ANY number of parameters are accepted​
+    function welcomeStudents () {
+        var args = Array.prototype.slice.call (arguments);
+
+        var lastItem = args.pop ();
+        console.log ("Welcome " + args.join (", ") + ", and " + lastItem + ".");
+    }
+
+    welcomeStudents.apply (null, students);
+    // Welcome Peter Alexander, Michael Woodruff, Judy Archer, and Malcolm Khan.
+
+*/
+</script>
+</body>
+</html>
